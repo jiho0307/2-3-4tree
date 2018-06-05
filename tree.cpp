@@ -102,7 +102,7 @@ class Tree{
 				for(j = 0; j < now->ret_cap(); j++)
 					if(now->ret_key(j) >= k)
 						break;
-				if(now->ret_key(j) == k)
+				if(j < now->ret_cap() && now->ret_key(j) == k)
 					return 1;
 				if(i != dep -1)
 					now = now->ret_child(j);
