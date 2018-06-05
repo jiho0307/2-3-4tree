@@ -183,7 +183,10 @@ class Tree{
 				Node *p = now->ret_parent();
 				if(p == NULL)
 				{
+					if(now->ret_child(0) == NULL)
+						break;
 					root = now->ret_child(0);
+					root->set_parent(NULL);
 					dep--;
 					delete now;
 					break;
