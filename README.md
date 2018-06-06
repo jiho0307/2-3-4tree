@@ -1,3 +1,3 @@
 # 2-3-4tree
 -just key
--use predecessor for delete operation
+-select sucessor or predecessor for delete operation by marco
