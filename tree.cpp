@@ -2,6 +2,9 @@
 #include<cstring>
 #include<cmath>
 
+#define SUC
+//#define PREDEC
+
 using namespace std;
 
 class Node{
@@ -165,6 +168,21 @@ class Tree{
 			int loc;
 			Node *now = find_node(k), *ch;
 			loc = now->del_key(k);
+#ifdef SUC
+			ch = now->ret_child(loc + 1);
+			while(ch != NULL)
+			{
+				if(ch->ret_child(0) == NULL)
+				{
+					now->put_key(ch->ret_key(0));
+					ch->del_key(ch->ret_key(0));
+					now = ch;
+					break;
+				}
+				ch = ch->ret_child(0);
+			}
+#endif
+#ifdef PREDEC
 			ch = now->ret_child(loc);
 			while(ch != NULL)
 			{
@@ -177,6 +195,7 @@ class Tree{
 				}
 				ch = ch->ret_child(ch->ret_cap());
 			}
+#endif
 			while(now->ret_cap() == 0)
 			{
 				int i;
